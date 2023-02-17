@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+    stages{
+        stage('preperation'){
+            steps {
+                echo "preperation is started"
+                git branch: 'main',url:'https://github.com/KAVYA-KH/java.git',credentialsId:'github'
+                echo "preperation is sucessful"
+                sh 'javac Test.java'
+                sh 'java Test'
+            }
+        }
+        stage('Build'){
+            steps {
+                    echo "build started in process"
+                    sleep 2
+                    echo "done"
+            }
+        }
+        stage('test'){
+            steps {
+                    echo "test in process"
+                    sleep 2
+                    echo "done"
+            }
+        }
+        
+    }
+}
